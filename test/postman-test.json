@@ -296,6 +296,61 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Debe eliminar una mascota",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ee982645-5d0d-42bf-ac4c-f21a4106c840",
+								"exec": [
+									"pm.test(\"El status code debe ser 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"El body debe estar vacio\", function () {",
+									"    pm.expect(pm.response.responseSize).to.be.eql(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/mascotas/:idMascota",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"mascotas",
+								":idMascota"
+							],
+							"variable": [
+								{
+									"id": "3f70a4d8-4a1a-48d8-8cb5-475e2b1c219d",
+									"key": "idMascota",
+									"value": "{{idMascota}}",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"event": [
