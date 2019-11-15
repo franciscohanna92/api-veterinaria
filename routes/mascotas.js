@@ -107,5 +107,27 @@ router.patch('/:idMascota', validarIdMascota, function (req, res, next) {
         })
 })
 
+
+// Ruta para eliminar una mascota
+router.delete('/:idMascota', validarIdMascota, function (req, res, next) {
+    const idMascota = req.params.IdMascota;
+
+    db.mascotas.remove({ _id: idMascota }, function (error, seEliminoLaMascota) {
+        if (error) {
+            return next(error)
+        }
+
+        if (seEliminoLaMascota) {
+            res.status(204)
+                .send({})
+        } else {
+            return next({
+                mensaje: "La mascota no pudo ser eliminada",
+                status: 500
+            })
+        }
+    })
+})
+
 // Exportamos nuestro router
 module.exports = router;
