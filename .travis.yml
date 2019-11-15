@@ -1,0 +1,16 @@
+language: node_js
+node_js: 
+  - stable
+branches:
+  only:
+  - master
+install:
+  - npm install
+script:
+  - npm test
+deploy:
+  provider: heroku
+  app: api-veterinaria-2019
+  skip_cleanup: true
+  api_key:
+    secure: $HEROKU_API_KEY

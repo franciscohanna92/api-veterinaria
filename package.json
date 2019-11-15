@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node ./server.js",
+    "pretest": "nohup node ./server.js > /dev/null 2>&1 &",
     "dev": "nodemon ./server.js",
     "test": "npx newman run test/postman-test.json",
     "debug": "node --inspect ./server.js",
@@ -17,7 +18,7 @@
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^1.0.1-4.1.3",
     "body-parser": "^1.19.0",
-    "bootprint": "^2.0.1",
+    "bootprint": "^1.0.2",
     "bootprint-openapi": "^1.1.1",
     "express": "^4.17.1",
     "js-yaml": "^3.13.1",
