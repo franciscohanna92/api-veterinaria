@@ -96,7 +96,7 @@ router.patch('/:idMascota', validarIdMascota, function (req, res, next) {
                 }
 
                 if (seActualizoLamascota) {
-                    res.send({})
+                    return res.status(200).send(mascotaActualizada)
                 } else {
                     return next({
                         mensaje: 'No se pudo actualizar la mascota',
@@ -110,7 +110,7 @@ router.patch('/:idMascota', validarIdMascota, function (req, res, next) {
 
 // Ruta para eliminar una mascota
 router.delete('/:idMascota', validarIdMascota, function (req, res, next) {
-    const idMascota = req.params.IdMascota;
+    const idMascota = req.params.idMascota;
 
     db.mascotas.remove({ _id: idMascota }, function (error, seEliminoLaMascota) {
         if (error) {
